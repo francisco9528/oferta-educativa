@@ -48,7 +48,7 @@ const app = Vue.createApp({
                 this.calculados.dispositivo = `desconocido-${navegador}`;        
             }
 
-            console.log(this.dispositivo);
+            // console.log(this.calculados.dispositivo);
         },
         ObtenerDatosOferta (){ // Metodo para obtener la información de la oferta educativa
 
@@ -56,6 +56,8 @@ const app = Vue.createApp({
 
                 return response.json();
             }).then(data => {
+
+                // console.log(data);
 
                 this.datos = data.message;
 
@@ -70,6 +72,8 @@ const app = Vue.createApp({
                 });
 
                 this.campus = campus;
+
+                // console.log(this.campus);
             });
         },
         obtenerCarrera(campus){ // Metodo para obtener las carreras que tiene cada campus
@@ -91,6 +95,8 @@ const app = Vue.createApp({
             });
 
             this.carreras = carreras;
+
+            // console.log(this.carreras);
         },
         seleccionCarrera(carrera){ // Metodo para establecer ciertos valores al elegir la carrera
 
@@ -163,7 +169,7 @@ const app = Vue.createApp({
             formData.append('gclid', '');
             formData.append('utm_campaign', '');
 
-            console.log(formData);
+            // console.log(formData);
 
             // Configuración de la solicitud
             const options = {
@@ -203,8 +209,8 @@ const app = Vue.createApp({
             }).catch(error => {
 
                 this.button = false;
-                Swal.fire('¡Error!', 'Hubo un problema al realizar la operación.', 'error');
-                // console.error('Error:', error);
+                Swal.fire('¡Error!', 'Hubo un problema informar al administrador', 'error');
+                console.error('Error:', error);
             });
         }
     },
