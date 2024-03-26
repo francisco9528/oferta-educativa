@@ -5,6 +5,7 @@ const app = Vue.createApp({
 
     data(){
         return {
+            button: false,
             datos: null,
             campus: null,
             carreras: null,
@@ -91,7 +92,7 @@ const app = Vue.createApp({
 
             this.carreras = carreras;
         },
-        seleccionCarrera(carrera){ // Metodo para 
+        seleccionCarrera(carrera){ // Metodo para establecer ciertos valores al elegir la carrera
 
             this.datos.some(objeto => {
                 
@@ -108,7 +109,9 @@ const app = Vue.createApp({
         },
         envioOferta () { // Metodo para enviar la información del pre-registro
 
-            console.log('se envio success');
+            // console.log('se envio success');
+            
+            this.button = true;
 
             // URL a la que enviar la solicitud POST
             const url = 'https://webhooksqa.uvm.mx/proc-leads/lead/medios.php';
@@ -195,9 +198,11 @@ const app = Vue.createApp({
                     Swal.fire('¡Error!', 'Hubo un problema al realizar la operación.', 'error');
                 }
 
+                this.button = false;
                 // console.log('Respuesta:', data);
             }).catch(error => {
 
+                this.button = false;
                 Swal.fire('¡Error!', 'Hubo un problema al realizar la operación.', 'error');
                 // console.error('Error:', error);
             });
